@@ -1,0 +1,27 @@
+name: Commit File to Repo
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  commit-file:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Install Python deps
+      run: pip install PyGithub
+
+    - name: Run commit script
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        REPO_NAME: ${{ github.repository }}
+        FILE_PATH: sample/baby_image.png
+        TARGET_PATH: assets/baby_image.png
+        COMMIT_MESSAGE: "Add/update baby image"
+      run: python .github/scripts/commit-file.py
