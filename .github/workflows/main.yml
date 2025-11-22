@@ -24,4 +24,4 @@ jobs:
         FILE_PATH: sample/baby_image.png
         TARGET_PATH: assets/baby_image.png
         COMMIT_MESSAGE: "Add/update baby image"
-      run: python .github/scripts/commit-file.py
+      run: python scripts/commit-file.py
